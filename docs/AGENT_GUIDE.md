@@ -1,6 +1,6 @@
 # Agent guide — how to pick the right SFX without downloading everything
 
-This repo is designed so an AI agent downloads **kilobytes (index.json)** instead of
+This repo is designed so an AI agent downloads **~2.5 MB (index.json)** instead of
 **hundreds of megabytes (all audio)**.
 
 ## 1. Load the catalog
@@ -8,7 +8,7 @@ This repo is designed so an AI agent downloads **kilobytes (index.json)** instea
 Raw URL (always current `main`):
 
 ```
-https://raw.githubusercontent.com/Mcamento8/open-game-sfx-index/main/index.json
+https://raw.githubusercontent.com/Legerdo/open-game-sfx-index/main/index.json
 ```
 
 Schema per entry:
@@ -45,7 +45,12 @@ Schema per entry:
 3. `use_cases` / `mood` for ambience fit.
 4. Fall back to bilingual keyword search (`keywords_en` + `keywords_ar`).
 
-Use `scripts/search.py` locally, or replicate its scoring in your own runtime.
+For automated tool calls, prefer [MCP or WebMCP](MCP.md):
+`search_sfx` returns ranked matches with direct audio URLs,
+`get_sfx` retrieves one exact ID, and `list_sfx_categories` lists search filters.
+The browser and MCP server share `scripts/sfx-search.js` (KO/EN/AR and exact
+match-all-terms ranking). The older `scripts/search.py` is an independent
+offline EN/AR keyword CLI with different scoring.
 
 ## 3. Download policy
 

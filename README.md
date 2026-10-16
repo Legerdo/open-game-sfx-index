@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/license-CC0_1.0-lightgrey?style=for-the-badge)](ATTRIBUTION.md)
 [![AI Ready](https://img.shields.io/badge/AI-index.json-orange?style=for-the-badge)](docs/AGENT_GUIDE.md)
 
-[🎧 **Listen now**](previews/README.md) · [🤖 **Agent guide**](docs/AGENT_GUIDE.md) · [📖 **Sources**](SOURCES.md) · [⚖️ **License**](ATTRIBUTION.md)
+[🎧 **Listen now**](https://legerdo.github.io/open-game-sfx-index/) · [🤖 **MCP/WebMCP**](docs/MCP.md) · [🤖 **Agent guide**](docs/AGENT_GUIDE.md) · [📖 **Sources**](SOURCES.md) · [⚖️ **License**](ATTRIBUTION.md)
 
 </div>
 
@@ -25,7 +25,7 @@
 | I am… | Do this |
 |-------|---------|
 | 🧑 Human | Open [🎧 **previews/README.md**](previews/README.md) → pick a pack → press ▶ on any sound |
-| 🤖 AI agent | Fetch [`index.json`](https://raw.githubusercontent.com/Mcamento8/open-game-sfx-index/main/index.json) → filter → download **one** file |
+| 🤖 AI agent | Use [MCP/WebMCP search tools](docs/MCP.md) or fetch [`index.json`](https://raw.githubusercontent.com/Legerdo/open-game-sfx-index/main/index.json) → download **one** chosen file |
 
 > ⚖️ **100% copyright-safe:** all audio is **Creative Commons CC0 1.0** (public domain).
 > Independent community index — not affiliated with Kenney. Proof in [ATTRIBUTION.md](ATTRIBUTION.md).
@@ -55,10 +55,34 @@
 
 ## 🤖 For AI agents
 
+**Tool-based access:** This fork exposes the following tools, backed by the same
+catalog and keyword scorer as the website:
+
+| Tool | Purpose |
+|------|---------|
+| `search_sfx` | Search by Korean/English/Arabic keywords; filter by category, pack, format or duration; receive ranked results and direct URLs |
+| `get_sfx` | Get exact audio metadata and download URLs by ID |
+| `list_sfx_categories` | Discover available categories and packs |
+| `preview_sfx` | Play a sound on the website (WebMCP browser agents only) |
+
+Open the [live website](https://legerdo.github.io/open-game-sfx-index/) in a WebMCP-enabled browser,
+or launch the local stdio MCP server for your coding agent:
+
+```sh
+npm ci
+node mcp/server.mjs
+```
+
+See [docs/MCP.md](docs/MCP.md) for Windows MCP client configuration,
+supported browsers and examples. The MCP server reads only the local `index.json`;
+it does not download or transmit the full audio collection.
+
+**Direct catalog access** also remains available without MCP:
+
 ```python
 import json, urllib.request
-URL = "https://raw.githubusercontent.com/Mcamento8/open-game-sfx-index/main/index.json"
-idx = json.load(urllib.request.urlopen(URL))          # kilobytes, not megabytes
+URL = "https://raw.githubusercontent.com/Legerdo/open-game-sfx-index/main/index.json"
+idx = json.load(urllib.request.urlopen(URL))          # ~2.5 MB catalog, not the full audio collection
 hits = [s for s in idx["sounds"]                      # filter locally
         if "click" in s["tags"] and s["category"] == "ui"]
 print(hits[0]["download_url_ogg"])                    # download ONE file only
@@ -80,9 +104,13 @@ bilingual `keywords_en/ar, duration_sec, size, sha256, download URLs, license, s
 ├── index.json           # master machine catalog (agents read this)
 ├── categories.json      # category descriptions
 ├── scripts/search.py    # offline keyword search (EN + AR)
+├── scripts/sfx-search.js # shared website/MCP keyword scorer (KO + EN + AR)
+├── scripts/webmcp.js    # Chrome WebMCP tools for browser agents
+├── mcp/server.mjs       # standard MCP stdio server for coding agents
 ├── scripts/build_index.py      # rebuild index.json
 ├── scripts/build_previews.py   # rebuild previews/
 ├── docs/AGENT_GUIDE.md  # how agents pick the right SFX
+├── docs/MCP.md          # MCP/WebMCP setup and integration guide
 ├── SOURCES.md           # exact upstream ZIP URLs
 ├── ATTRIBUTION.md       # CC0 proof + credit
 └── batches/STATUS.md    # upload log
