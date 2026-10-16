@@ -4,3 +4,6 @@ __pycache__/
 _work/
 # local audit zips (never commit)
 *.zip
+# Node MCP server dependencies and local output
+node_modules/
+npm-debug.log*
