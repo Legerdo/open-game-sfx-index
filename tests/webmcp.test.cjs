@@ -14,6 +14,11 @@ test('WebMCP exposes search, detail, inventory and user-visible preview tools', 
   const matches = await tools[0].execute({ query: '폭발', limit: 3 });
   assert.ok(matches.results.length > 0);
   assert.ok(matches.results.length <= 3);
+  assert.deepEqual(tools[0].inputSchema.properties.match_mode.enum, ['all', 'any']);
+  const natural = await tools[0].execute({ query: '문 열기', limit: 3 });
+  assert.match(natural.results[0].title, /door.*open/i);
+  const partial = await tools[0].execute({ query: 'zombie unknownterm', match_mode: 'any', limit: 3 });
+  assert.equal(partial.results[0].matched_terms, 1);
   const detail = await tools[1].execute({ id: matches.results[0].id });
   assert.equal(detail.id, matches.results[0].id);
   assert.match(detail.preview_url, /^https:\/\//);

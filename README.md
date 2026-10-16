@@ -60,7 +60,7 @@ catalog and keyword scorer as the website:
 
 | Tool | Purpose |
 |------|---------|
-| `search_sfx` | Search by Korean/English/Arabic keywords; filter by category, pack, format or duration; receive ranked results and direct URLs |
+| `search_sfx` | Search by Korean/English/Arabic keywords and common synonyms; filter by category, pack, format or duration; retry partial matching with `match_mode: "any"` |
 | `get_sfx` | Get exact audio metadata and download URLs by ID |
 | `list_sfx_categories` | Discover available categories and packs |
 | `preview_sfx` | Play a sound on the website (WebMCP browser agents only) |

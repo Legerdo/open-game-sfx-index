@@ -26,7 +26,7 @@ serveStdio(() => {
 
   server.registerTool('search_sfx', {
     title: 'Search game sound effects',
-    description: 'Find CC0 game SFX by Korean, English, or Arabic keywords. All query words must match (Korean words have English aliases). Returns ranked hits with direct preview/download URLs and original license/source. Filter by category, pack, format, or duration; retry broader words if no matches.',
+    description: 'Find CC0 game SFX by Korean, English, or Arabic keywords. All meaningful query words match by default (Korean words have English synonyms). Returns ranked direct preview/download URLs with license/source. If no results, retry with match_mode any for clearly marked partial matches, or use simpler terms. Filter by category, pack, format or duration.',
     annotations: { readOnlyHint: true },
     inputSchema: z.object({
       query: z.string().max(160).default('').describe('Sound description, e.g. 폭발, button click, sword hit'),
@@ -35,6 +35,7 @@ serveStdio(() => {
       format: z.enum(FORMATS).optional(),
       min_duration_sec: z.number().min(0).optional(),
       max_duration_sec: z.number().min(0).optional(),
+      match_mode: z.enum(['all', 'any']).default('all'),
       limit: z.number().int().min(1).max(30).default(10)
     })
   }, async args => result(searchSounds(sounds, args)));
