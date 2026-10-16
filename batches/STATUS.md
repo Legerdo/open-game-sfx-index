@@ -42,6 +42,23 @@ Skipped: 5 non-CC0 packs + 5 Kenney re-uploads (dupes of Wave 1).
 - [x] oga-gui-lokif (13) + oga-hits-punches (37 FLAC) + oga-levelup-powerup (13)
 - [x] oga-zombies (24) + oga-footsteps (8) + oga-battle (4)
 
+## Wave 3 — OpenGameArt CC0 by rubberduck (2026-10-16, +735)
+
+- [x] Ten packs: general Foley (100), RPG (80), creatures (80),
+  breaking / falling / impact (75), sci-fi (50), water / slime (40),
+  metal / wood (100), Foley Vol. 2 (100), creatures Vol. 2 (80), loops (30).
+- [x] All ten official pack pages designate **CC0** and link to the downloaded ZIPs.
+- [x] ZIP CRC and decoded PCM validated. Byte SHA-256 + decoded PCM SHA-256
+  deduplication against all 1,451 prior files and among new files: **0 duplicates**.
+- [x] All 735 unique files preserved in OGG format; new total: **2,186**.
+- [x] Sources, archive checksums and authors recorded in
+  [CC0_IMPORT_AUDIT.json](../docs/CC0_IMPORT_AUDIT.json) and [SOURCES.md](../SOURCES.md).
+- [x] Distinct IDs repaired for 87 pre-existing collisions caused by truncating
+  long paths in the 512-retro pack. First matching historical ID retained.
+
+Run `python scripts/import_cc0_oga.py` after adding a new manifest entry,
+then `python scripts/build_index.py` and `python scripts/build_previews.py`.
+
 ## Not mirrored (legal reasons — see ATTRIBUTION.md)
 
 - Sonniss GDC: redistribution as sound library prohibited + AI use prohibited.

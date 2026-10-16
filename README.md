@@ -2,10 +2,10 @@
 
 # 🎮 Open Game SFX Index 🔊
 
-**Every Kenney + OpenGameArt CC0 game sound — searchable by AI, playable in your browser.**
+**Curated Kenney + OpenGameArt CC0 game sound effects — searchable by AI, playable in your browser.**
 
-[![Sounds](https://img.shields.io/badge/sounds-1451-brightgreen?style=for-the-badge)](previews/README.md)
-[![Packs](https://img.shields.io/badge/packs-18-blue?style=for-the-badge)](SOURCES.md)
+[![Sounds](https://img.shields.io/badge/sounds-2186-brightgreen?style=for-the-badge)](previews/README.md)
+[![Packs](https://img.shields.io/badge/packs-28-blue?style=for-the-badge)](SOURCES.md)
 [![License](https://img.shields.io/badge/license-CC0_1.0-lightgrey?style=for-the-badge)](ATTRIBUTION.md)
 [![AI Ready](https://img.shields.io/badge/AI-index.json-orange?style=for-the-badge)](docs/AGENT_GUIDE.md)
 
@@ -17,7 +17,7 @@
 
 ## ✨ What is this?
 
-**1451 public-domain game sound effects** (OGG/WAV/FLAC, ~72 MB total) from
+**2,186 CC0 game sound effects** (OGG/WAV/FLAC, ~95 MiB total) from
 [Kenney.nl](https://kenney.nl/assets/category:Audio) and CC0-verified
 [OpenGameArt.org](https://opengameart.org) packs, organized so that
 **humans can listen in one click** and **AI agents can search without downloading everything**.
@@ -52,6 +52,16 @@
 | 🪙 OGA Level-Up & Coins | 13 | [▶ Play](previews/oga-levelup-powerup.md) | [opengameart.org](https://opengameart.org/content/level-up-power-up-coin-get-13-sounds) |
 | 👣 OGA Footsteps | 8 | [▶ Play](previews/oga-footsteps.md) | [opengameart.org](https://opengameart.org/content/different-steps-on-wood-stone-leaves-gravel-and-mud) |
 | ⚔️ OGA Battle | 4 | [▶ Play](previews/oga-battle.md) | [opengameart.org](https://opengameart.org/content/battle-sound-effects) |
+| 🏠 OGA Foley: Everyday SFX | 100 | [▶ Play](previews/oga-rubberduck-100-foley.md) | [opengameart.org](https://opengameart.org/content/100-cc0-sfx) |
+| ⚔️ OGA 80 RPG SFX | 80 | [▶ Play](previews/oga-rubberduck-rpg-80.md) | [opengameart.org](https://opengameart.org/content/80-cc0-rpg-sfx) |
+| 🐉 OGA Creature SFX | 80 | [▶ Play](previews/oga-rubberduck-creatures-80.md) | [opengameart.org](https://opengameart.org/content/80-cc0-creature-sfx) |
+| 💥 OGA Breaking / Falling / Hits | 75 | [▶ Play](previews/oga-rubberduck-breaking-75.md) | [opengameart.org](https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx) |
+| 🛸 OGA Sci-Fi SFX | 50 | [▶ Play](previews/oga-rubberduck-scifi-50.md) | [opengameart.org](https://opengameart.org/content/50-cc0-sci-fi-sfx) |
+| 💧 OGA Water & Slime | 40 | [▶ Play](previews/oga-rubberduck-water-40.md) | [opengameart.org](https://opengameart.org/content/40-cc0-water-splash-slime-sfx) |
+| 🔨 OGA Metal & Wood | 100 | [▶ Play](previews/oga-rubberduck-metal-wood-100.md) | [opengameart.org](https://opengameart.org/content/100-cc0-metal-and-wood-sfx) |
+| 👣 OGA Foley Vol. 2 | 100 | [▶ Play](previews/oga-rubberduck-foley-100-v2.md) | [opengameart.org](https://opengameart.org/content/100-cc0-sfx-2) |
+| 🐉 OGA Creature Vol. 2 | 80 | [▶ Play](previews/oga-rubberduck-creatures-80-v2.md) | [opengameart.org](https://opengameart.org/content/80-cc0-creture-sfx-2) |
+| 🌫️ OGA Ambient Loops | 30 | [▶ Play](previews/oga-rubberduck-loops-30.md) | [opengameart.org](https://opengameart.org/content/30-cc0-sfx-loops) |
 
 ## 🤖 For AI agents
 
@@ -82,7 +92,7 @@ it does not download or transmit the full audio collection.
 ```python
 import json, urllib.request
 URL = "https://raw.githubusercontent.com/Legerdo/open-game-sfx-index/main/index.json"
-idx = json.load(urllib.request.urlopen(URL))          # ~2.5 MB catalog, not the full audio collection
+idx = json.load(urllib.request.urlopen(URL))          # ~3.9 MB catalog, not the full audio collection
 hits = [s for s in idx["sounds"]                      # filter locally
         if "click" in s["tags"] and s["category"] == "ui"]
 print(hits[0]["download_url_ogg"])                    # download ONE file only
@@ -95,12 +105,13 @@ Or locally: `python scripts/search.py --q "button click" --limit 5`
 
 Each entry carries: `id, title, pack, category, tags, use_cases, mood,`
 bilingual `keywords_en/ar, duration_sec, size, sha256, download URLs, license, source`.
+Newly imported packs also provide `author` and `source_archive`.
 
 ## 📁 Layout
 
 ```
 ├── previews/            # ▶ per-pack listening pages (start here as a human)
-├── audio/<pack>/        # 1451 audio files (Kenney OGG + OGA WAV/FLAC)
+├── audio/<pack>/        # 2186 audio files (Kenney OGG + OGA OGG/WAV/FLAC)
 ├── index.json           # master machine catalog (agents read this)
 ├── categories.json      # category descriptions
 ├── scripts/search.py    # offline keyword search (EN + AR)
@@ -108,11 +119,14 @@ bilingual `keywords_en/ar, duration_sec, size, sha256, download URLs, license, s
 ├── scripts/webmcp.js    # Chrome WebMCP tools for browser agents
 ├── mcp/server.mjs       # standard MCP stdio server for coding agents
 ├── scripts/build_index.py      # rebuild index.json
+├── scripts/import_cc0_oga.py   # licensed and duplicate-checked CC0 importer
+├── scripts/cc0_oga_packs.json  # audited source URLs, authors, categories
 ├── scripts/build_previews.py   # rebuild previews/
 ├── docs/AGENT_GUIDE.md  # how agents pick the right SFX
 ├── docs/MCP.md          # MCP/WebMCP setup and integration guide
 ├── SOURCES.md           # exact upstream ZIP URLs
 ├── ATTRIBUTION.md       # CC0 proof + credit
+├── docs/CC0_IMPORT_AUDIT.json  # imported archive SHA-256 and duplicate audit
 └── batches/STATUS.md    # upload log
 ```
 
@@ -121,7 +135,12 @@ bilingual `keywords_en/ar, duration_sec, size, sha256, download URLs, license, s
 **Is this the complete Kenney audio collection?**
 Yes — all **10 packs** in the [Audio category](https://kenney.nl/assets/category:Audio),
 verified file-by-file against the upstream ZIPs (753 OGG shipped − 9 preview tracks = **744**).
-On top: **8 CC0 packs from OpenGameArt** (707 sounds). Total **1451**.
+On top: **18 CC0 packs from OpenGameArt** (1,442 sounds). Total **2,186**.
+The latest 10 packs contribute 735 distinct sounds from rubberduck. For each pack,
+the importer verified the original CC0 page, checked the ZIP archive, decoded
+every sound, and checked for duplicate file and decoded audio content against
+the existing library. See [the import audit](docs/CC0_IMPORT_AUDIT.json) and
+[source manifest](scripts/cc0_oga_packs.json).
 
 **Why OGG + WAV + FLAC?**
 Kenney ships OGG; OGA authors ship WAV/FLAC (one AIFF pack converted losslessly to WAV).
@@ -137,5 +156,5 @@ no permission or attribution required (credit appreciated).
 
 ## ⚖️ License
 
-- **Audio (`audio/`)**: CC0 1.0 Universal — public domain, by Kenney.
+- **Audio (`audio/`)**: CC0 1.0 Universal — public domain, by Kenney and the identified OpenGameArt authors.
 - **Code / metadata / docs**: MIT — see [LICENSE](LICENSE).

@@ -1,7 +1,7 @@
 # Open Game SFX Index — CC0 game sound effects
 
 Website: https://legerdo.github.io/open-game-sfx-index/
-Catalog JSON (~2.5 MB, 1451 effects): https://raw.githubusercontent.com/Legerdo/open-game-sfx-index/main/index.json
+Catalog JSON (~3.9 MB, 2186 effects): https://raw.githubusercontent.com/Legerdo/open-game-sfx-index/main/index.json
 MCP and WebMCP integration: https://github.com/Legerdo/open-game-sfx-index/blob/main/docs/MCP.md
 Agent search and licensing guide: https://github.com/Legerdo/open-game-sfx-index/blob/main/docs/AGENT_GUIDE.md
 License details: https://github.com/Legerdo/open-game-sfx-index/blob/main/ATTRIBUTION.md

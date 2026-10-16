@@ -1,6 +1,6 @@
 # Agent guide — how to pick the right SFX without downloading everything
 
-This repo is designed so an AI agent downloads **~2.5 MB (index.json)** instead of
+This repo is designed so an AI agent downloads **~3.9 MB (index.json)** instead of
 **hundreds of megabytes (all audio)**.
 
 ## 1. Load the catalog
@@ -48,6 +48,9 @@ Schema per entry:
 For automated tool calls, prefer [MCP or WebMCP](MCP.md):
 `search_sfx` returns ranked matches with direct audio URLs,
 `get_sfx` retrieves one exact ID, and `list_sfx_categories` lists search filters.
+The `get_sfx` response for newly imported packs includes the verified `author`,
+original `source` page, and `source_archive` ZIP URL. Archive checksums and
+license verification notes are in [CC0_IMPORT_AUDIT.json](CC0_IMPORT_AUDIT.json).
 The browser and MCP server share `scripts/sfx-search.js` (KO/EN/AR and exact
 match-all-terms ranking). The older `scripts/search.py` is an independent
 offline EN/AR keyword CLI with different scoring.
@@ -96,3 +99,6 @@ For a Minecraft target, either transcode those (`ffmpeg -i in.wav -c:a libvorbis
 | voiceover | fighter grunts, male/female lines | voiceover packs |
 | retro | 8-bit/16-bit chiptune arcade | oga-512-retro |
 | horror | zombies, monsters, dark ambience | oga-zombies |
+| foley | household, tools, doors, liquid and physical props | oga-rubberduck-100-foley, oga-rubberduck-metal-wood-100, oga-rubberduck-water-40, oga-rubberduck-foley-100-v2 |
+| creature | monsters, creature vocalizations, aliens | oga-rubberduck-creatures-80, oga-rubberduck-creatures-80-v2 |
+| ambient | alarms, machinery and atmospheric loops | oga-rubberduck-loops-30 |
