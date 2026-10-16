@@ -28,6 +28,23 @@ test('MCP stdio client can discover and call the live server', { timeout: 15_000
     const detail = await client.callTool({ name: 'get_sfx', arguments: { id } });
     assert.equal(detail.structuredContent.id, id);
     assert.ok(detail.structuredContent.preview_url);
+
+    for (const [query, expectedCategory] of [
+      ['좀비 신음소리', 'horror'],
+      ['마법 발동 효과음', 'rpg'],
+      ['victory jingle', 'music-jingle'],
+      ['confirmation ui', 'interface']
+    ]) {
+      const found = await client.callTool({ name: 'search_sfx', arguments: { query, limit: 3 } });
+      assert.ok(found.structuredContent.total > 0, query);
+      assert.equal(found.structuredContent.results[0].category, expectedCategory, query);
+    }
+
+    const partial = await client.callTool({ name: 'search_sfx', arguments: {
+      query: 'door not-in-catalog', match_mode: 'any', limit: 3
+    } });
+    assert.ok(partial.structuredContent.total > 0);
+    assert.equal(partial.structuredContent.results[0].matched_terms, 1);
   } finally {
     await client.close();
   }

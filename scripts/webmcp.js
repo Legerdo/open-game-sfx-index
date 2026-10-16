@@ -16,7 +16,7 @@
     return [
       {
         name: 'search_sfx',
-        description: 'Search the CC0 game sound effects catalog by Korean, English, or Arabic keywords. Rank matches and return direct preview/download URLs. Filter by category, pack, format, and duration. Search matches all query words.',
+        description: 'Search CC0 game SFX in Korean, English, or Arabic. Returns ranked results with direct preview/download URLs. All meaningful words must match by default; if no results, retry with match_mode any to see clearly marked partial matches, or simplify the query.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -26,6 +26,7 @@
             format: { type: 'string', enum: search.FORMATS },
             min_duration_sec: { type: 'number', minimum: 0 },
             max_duration_sec: { type: 'number', minimum: 0 },
+            match_mode: { type: 'string', enum: ['all', 'any'], default: 'all', description: 'all requires every meaningful query word; any ranks partial keyword matches by coverage' },
             limit: { type: 'integer', minimum: 1, maximum: 30, default: 10 }
           },
           additionalProperties: false

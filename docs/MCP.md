@@ -13,7 +13,7 @@ registers four tools automatically:
 
 | Tool | Inputs | Result |
 |------|--------|--------|
-| `search_sfx` | `query`, optionally `category`, `pack`, `format`, `min_duration_sec`, `max_duration_sec`, `limit` | Ranked effects, scores, durations, licenses, original audio URLs |
+| `search_sfx` | `query`, optionally `category`, `pack`, `format`, `min_duration_sec`, `max_duration_sec`, `match_mode`, `limit` | Ranked effects, scores, durations, licenses, original audio URLs |
 | `get_sfx` | `id` | Exact sound metadata, checksums, formats, source and URLs |
 | `list_sfx_categories` | none | Available categories and packs with counts |
 | `preview_sfx` | `id` | Plays the sound in the page and returns playback status and preview URL |
@@ -76,10 +76,17 @@ Ask: **"1초 이내의 UI 버튼 클릭 효과음 3개를 찾아줘"**.
 3. Call `get_sfx` with the selected ID for its checksum and metadata.
 4. Download only the desired `download_urls.ogg`/`.mp3`/`.wav`/`.flac` URL.
 
-Search requires **all query words** to match at least one metadata field;
-individual Korean words use an English synonym map. It is keyword retrieval,
-not sound similarity search or audio recognition. If the result set is empty,
-try a broader term, or use `list_sfx_categories` to narrow by category/pack.
+Search requires **all meaningful query words** to match at least one metadata
+field by default. Common Korean grammatical particles and words such as
+"소리" / "효과음" are handled, and Korean/English synonyms expand specific
+audio terms (e.g. "문을 열기" to door/open, "좀비 신음소리" to zombie/growl).
+It is keyword retrieval, not sound similarity search or audio recognition.
+
+If the strict result set is empty, retry `search_sfx` with `match_mode: "any"`.
+This returns *partial keyword matches*, ranked by how many query concepts
+matched; compare each result's `matched_terms` against `query_terms` before
+selecting. Alternatively use simpler terms or `list_sfx_categories` to narrow
+by category/pack. `match_mode` defaults to `"all"`.
 Only formats actually provided by each file are returned. Never assume an
 MP3 or OGG variant exists if it is absent from `formats`.
 
