@@ -41,6 +41,27 @@ were skipped as duplicates.
 7. Different Steps (8) — TinyWorlds — https://opengameart.org/content/different-steps-on-wood-stone-leaves-gravel-and-mud
 8. Battle Sound Effects (4) — Ogrebane — https://opengameart.org/content/battle-sound-effects
 
+## Source 3 — additional OpenGameArt CC0 packs (verified 2026-10-16)
+
+The official asset pages for all 10 packs explicitly designate the files as
+**Creative Commons CC0 1.0**. All are by **rubberduck**. Their original archive
+URLs and SHA-256 checksums are recorded in [SOURCES.md](SOURCES.md) and
+[docs/CC0_IMPORT_AUDIT.json](docs/CC0_IMPORT_AUDIT.json).
+
+1. 100 CC0 SFX (100) — https://opengameart.org/content/100-cc0-sfx
+2. 80 CC0 RPG SFX (80) — https://opengameart.org/content/80-cc0-rpg-sfx
+3. 80 CC0 creature SFX (80) — https://opengameart.org/content/80-cc0-creature-sfx
+4. 75 CC0 breaking/falling/hit SFX (75) — https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx
+5. 50 CC0 Sci-Fi SFX (50) — https://opengameart.org/content/50-cc0-sci-fi-sfx
+6. 40 CC0 water/splash/slime SFX (40) — https://opengameart.org/content/40-cc0-water-splash-slime-sfx
+7. 100 CC0 metal and wood SFX (100) — https://opengameart.org/content/100-cc0-metal-and-wood-sfx
+8. 100 CC0 SFX #2 (100) — https://opengameart.org/content/100-cc0-sfx-2
+9. 80 CC0 creature SFX #2 (80) — https://opengameart.org/content/80-cc0-creture-sfx-2
+10. 30 CC0 SFX loops (30) — https://opengameart.org/content/30-cc0-sfx-loops
+
+Newly imported sounds are checked against prior files by file SHA-256 and
+decoded PCM SHA-256 before inclusion; sound IDs are unique in the index.
+
 ## Explicitly NOT included (license forbids it)
 
 - **Sonniss GDC bundles** — the license (v2.0, sonniss.com/gdc-bundle-license)

@@ -1,0 +1,102 @@
+[
+  {
+    "pack": "oga-rubberduck-100-foley",
+    "page": "https://opengameart.org/content/100-cc0-sfx",
+    "archive": "https://opengameart.org/sites/default/files/100-CC0-SFX_0.zip",
+    "author": "rubberduck", "expected": 100, "category": "foley",
+    "title": "OGA Foley: 100 Everyday SFX", "emoji": "🏠", "description": "Household sounds, paper, keys, glass, doors and objects by rubberduck (CC0).",
+    "tags": ["foley", "household", "mechanical"],
+    "use_cases": ["household interaction", "environmental props", "object interaction"],
+    "mood": ["organic", "neutral"], "ar": ["مؤثرات", "أدوات", "منزل"]
+  },
+  {
+    "pack": "oga-rubberduck-rpg-80",
+    "page": "https://opengameart.org/content/80-cc0-rpg-sfx",
+    "archive": "https://opengameart.org/sites/default/files/80-CC0-RPG-SFX_0.zip",
+    "author": "rubberduck", "expected": 80, "category": "rpg",
+    "title": "OGA 80 RPG SFX", "emoji": "⚔️", "description": "Blade, items, spells and fantasy creatures by rubberduck (CC0).",
+    "tags": ["rpg", "fantasy", "item", "magic"],
+    "use_cases": ["fantasy combat", "inventory interaction", "spell casting"],
+    "mood": ["adventurous", "organic"], "ar": ["سحر", "سلاح", "فانتازيا"]
+  },
+  {
+    "pack": "oga-rubberduck-creatures-80",
+    "page": "https://opengameart.org/content/80-cc0-creature-sfx",
+    "archive": "https://opengameart.org/sites/default/files/80-CC0-creature-SFX_0.zip",
+    "author": "rubberduck", "expected": 80, "category": "creature",
+    "title": "OGA 80 Creature SFX", "emoji": "🐉", "description": "Creatures, monsters, growls and reactions by rubberduck (CC0).",
+    "tags": ["creature", "monster", "voice"],
+    "use_cases": ["creature vocalizations", "monster combat", "enemy reactions"],
+    "mood": ["dark", "expressive"], "ar": ["وحش", "مخلوق", "صرخة"]
+  },
+  {
+    "pack": "oga-rubberduck-breaking-75",
+    "page": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx",
+    "archive": "https://opengameart.org/sites/default/files/sfx_breaking_and_falling.zip",
+    "author": "rubberduck", "expected": 75, "category": "impact",
+    "title": "OGA 75 Breaking & Impact SFX", "emoji": "💥", "description": "Glass, stone, wood, falling and destruction by rubberduck (CC0).",
+    "tags": ["breaking", "falling", "hit", "destruction"],
+    "use_cases": ["destructible props", "combat impact", "objects falling"],
+    "mood": ["punchy", "organic"], "ar": ["تحطم", "سقوط", "ضربة"]
+  },
+  {
+    "pack": "oga-rubberduck-scifi-50",
+    "page": "https://opengameart.org/content/50-cc0-sci-fi-sfx",
+    "archive": "https://opengameart.org/sites/default/files/sci-fi-sfx.zip",
+    "author": "rubberduck", "expected": 50, "category": "sci-fi",
+    "title": "OGA 50 Sci-Fi SFX", "emoji": "🛸", "description": "Beeping, rockets, laser shots and teleporting by rubberduck (CC0).",
+    "tags": ["sci-fi", "beep", "laser", "teleport"],
+    "use_cases": ["space shooter", "science fiction UI", "futuristic machinery"],
+    "mood": ["futuristic", "electronic"], "ar": ["ليزر", "فضاء", "خيال علمي"]
+  },
+  {
+    "pack": "oga-rubberduck-water-40",
+    "page": "https://opengameart.org/content/40-cc0-water-splash-slime-sfx",
+    "archive": "https://opengameart.org/sites/default/files/water-splash-slime-sfx.zip",
+    "author": "rubberduck", "expected": 40, "category": "foley",
+    "title": "OGA 40 Water & Slime SFX", "emoji": "💧", "description": "Bubbles, water splashes, slime and liquid loops by rubberduck (CC0).",
+    "tags": ["water", "splash", "slime", "liquid"],
+    "use_cases": ["water interaction", "wet combat", "liquid ambience"],
+    "mood": ["wet", "organic"], "ar": ["ماء", "رذاذ", "وحل"]
+  },
+  {
+    "pack": "oga-rubberduck-metal-wood-100",
+    "page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+    "archive": "https://opengameart.org/sites/default/files/100-CC0-wood-metal-SFX.zip",
+    "author": "rubberduck", "expected": 100, "category": "foley",
+    "title": "OGA 100 Metal & Wood SFX", "emoji": "🔨", "description": "Metal tools, locks, wooden impacts and creaking by rubberduck (CC0).",
+    "tags": ["metal", "wood", "foley", "construction"],
+    "use_cases": ["wooden props", "metal doors", "building interaction"],
+    "mood": ["organic", "heavy"], "ar": ["معدن", "خشب", "مطرقة"]
+  },
+  {
+    "pack": "oga-rubberduck-foley-100-v2",
+    "page": "https://opengameart.org/content/100-cc0-sfx-2",
+    "archive": "https://opengameart.org/sites/default/files/sfx_100_v2.zip",
+    "author": "rubberduck", "expected": 100, "category": "foley",
+    "title": "OGA Foley: 100 SFX Vol. 2", "emoji": "👣", "description": "Footsteps, ambience, thunder and objects by rubberduck (CC0).",
+    "tags": ["foley", "environment", "ambient"],
+    "use_cases": ["footsteps", "ambient environments", "prop interactions"],
+    "mood": ["organic", "atmospheric"], "ar": ["خطوات", "بيئة", "أجواء"]
+  },
+  {
+    "pack": "oga-rubberduck-creatures-80-v2",
+    "page": "https://opengameart.org/content/80-cc0-creture-sfx-2",
+    "archive": "https://opengameart.org/sites/default/files/80-CC0-creature-sfx-2.zip",
+    "author": "rubberduck", "expected": 80, "category": "creature",
+    "title": "OGA 80 Creature SFX Vol. 2", "emoji": "🐉", "description": "Monster attacks, pain, slime and alien sounds by rubberduck (CC0).",
+    "tags": ["creature", "monster", "alien"],
+    "use_cases": ["creature attacks", "monster pain", "alien ambience"],
+    "mood": ["dark", "expressive"], "ar": ["وحش", "مخلوق", "صرخة"]
+  },
+  {
+    "pack": "oga-rubberduck-loops-30",
+    "page": "https://opengameart.org/content/30-cc0-sfx-loops",
+    "archive": "https://opengameart.org/sites/default/files/sfx_loops.zip",
+    "author": "rubberduck", "expected": 30, "category": "ambient",
+    "title": "OGA 30 Ambient SFX Loops", "emoji": "🌫️", "description": "Looping mechanical, alarm and environmental ambience by rubberduck (CC0).",
+    "tags": ["loop", "ambient", "mechanical"],
+    "use_cases": ["ambient loops", "machinery", "background atmospheres"],
+    "mood": ["atmospheric", "neutral"], "ar": ["تكرار", "أجواء", "آلة"]
+  }
+]

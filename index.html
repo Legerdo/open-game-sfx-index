@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark" />
-  <meta name="description" content="CC0 게임 효과음 1,451개를 빠르게 검색하고 들어보고 다운로드하는 SFX 라이브러리" />
+  <meta name="description" content="CC0 게임 효과음을 빠르게 검색하고 들어보고 다운로드하는 SFX 라이브러리" />
   <title>SFX Atlas — 무료 게임 효과음 라이브러리</title>
   <style>
 :root{--bg:#0d1014;--sidebar:#11151b;--panel:#161c23;--panel-2:#1a212a;--border:#29313b;--muted:#88939e;--text:#edf1f2;--accent:#cbf874;--accent-dark:#253b1d;--head:'Segoe UI',Inter,system-ui,-apple-system,sans-serif;--shadow:0 20px 70px rgba(0,0,0,.26)}
@@ -91,7 +91,7 @@ body:has(.player:not([hidden])) .app-shell{padding-bottom:96px}
           <div class="sound-grid" id="soundGrid" aria-live="polite"></div>
           <div class="more-wrap"><button type="button" class="load-more" id="loadMore" hidden>더 많은 사운드 보기 <svg class="icon"><use href="#i-arrow"/></svg></button><p id="pageStatus" class="page-status"></p></div>
         </section>
-        <footer class="footer"><div><strong>SFX<span>ATLAS</span></strong> — Open Game SFX Index의 비공식 브라우저</div><div>Original assets: <a href="https://kenney.nl/" target="_blank" rel="noopener noreferrer">Kenney</a> & <a href="https://opengameart.org/" target="_blank" rel="noopener noreferrer">OpenGameArt</a> <span class="footer-dot">·</span> <a href="https://github.com/Mcamento8/open-game-sfx-index/blob/main/ATTRIBUTION.md" target="_blank" rel="noopener noreferrer">라이선스 및 출처</a></div></footer>
+        <footer class="footer"><div><strong>SFX<span>ATLAS</span></strong> — Open Game SFX Index의 비공식 브라우저</div><div>Original assets: <a href="https://kenney.nl/" target="_blank" rel="noopener noreferrer">Kenney</a> & <a href="https://opengameart.org/" target="_blank" rel="noopener noreferrer">OpenGameArt</a> <span class="footer-dot">·</span> <a href="https://github.com/Legerdo/open-game-sfx-index/blob/main/ATTRIBUTION.md" target="_blank" rel="noopener noreferrer">라이선스 및 출처</a></div></footer>
       </div>
     </main>
   </div>
@@ -108,7 +108,7 @@ body:has(.player:not([hidden])) .app-shell{padding-bottom:96px}
   'use strict';
 
   const INDEX_URL = 'https://raw.githubusercontent.com/Legerdo/open-game-sfx-index/main/index.json';
-  const AUDIO_PREFIX = 'https://raw.githubusercontent.com/Mcamento8/open-game-sfx-index/main/audio/';
+  const AUDIO_PREFIX = 'https://raw.githubusercontent.com/Legerdo/open-game-sfx-index/main/audio/';
   const FAVORITES_KEY = 'sfx-atlas-favorites-v1';
   const PAGE_SIZE = 24;
   const MAX_ZIP_ITEMS = 60;
@@ -124,7 +124,10 @@ body:has(.player:not([hidden])) .app-shell{padding-bottom:96px}
     { id: 'music-jingle', name: '뮤직 징글', mark: '♫', color: '#f5a1ba' },
     { id: 'voiceover', name: '보이스', mark: '♬', color: '#c3d5ec' },
     { id: 'retro', name: '레트로 · 8비트', mark: '▦', color: '#c8f27a' },
-    { id: 'horror', name: '호러', mark: '☾', color: '#d4a4d2' }
+    { id: 'horror', name: '호러', mark: '☾', color: '#d4a4d2' },
+    { id: 'foley', name: '생활음 · 폴리', mark: '♧', color: '#dec894' },
+    { id: 'creature', name: '몬스터 · 생물', mark: '♞', color: '#e3ab96' },
+    { id: 'ambient', name: '환경음 · 루프', mark: '≋', color: '#87c6ab' }
   ];
   const icon = (name, extra = '') => `<svg class="icon ${extra}" aria-hidden="true"><use href="#i-${name}"></use></svg>`;
   const $ = id => document.getElementById(id);

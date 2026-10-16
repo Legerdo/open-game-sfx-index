@@ -14,7 +14,7 @@ import re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 AUDIO = ROOT / "audio"
 INDEX = ROOT / "index.json"
-REPO = "Mcamento8/open-game-sfx-index"
+REPO = "Legerdo/open-game-sfx-index"
 RAW = f"https://raw.githubusercontent.com/{REPO}/main"
 
 
@@ -86,6 +86,27 @@ PACK_META = {
                  "mood": ["intense", "punchy"], "ar": ["معركة", "سلاح"]},
 }
 
+EXTRA_CATEGORY_DESCRIPTIONS = {
+    "foley": ("Household objects, doors, tools, water and real-world recordings.", "أصوات الأشياء والأبواب والماء والأدوات"),
+    "creature": ("Monster, animal, alien and creature vocalizations.", "أصوات وحوش وحيوانات ومخلوقات"),
+    "ambient": ("Loopable environmental atmospheres, machinery and alarm beds.", "أصوات أجواء وبيئات وآلات متكررة"),
+}
+
+# Imported CC0 packs have individually verified source pages and archives.
+# Load the same manifest used by the importer so the index cannot silently
+# lose author or provenance metadata when rebuilt.
+for imported in json.loads((ROOT / "scripts" / "cc0_oga_packs.json").read_text(encoding="utf-8")):
+    PACK_META[imported["pack"]] = {
+        "category": imported["category"],
+        "source": imported["page"],
+        "source_archive": imported["archive"],
+        "author": imported["author"],
+        "tags": imported["tags"],
+        "use_cases": imported["use_cases"],
+        "mood": imported["mood"],
+        "ar": imported["ar"],
+    }
+
 WORD_SPLIT = re.compile(r"[^a-z0-9\u0600-\u06FF]+")
 
 
@@ -149,7 +170,7 @@ def main():
             rel_wav = (wav.relative_to(ROOT).as_posix()) if wav else None
             rel_flac = (flac.relative_to(ROOT).as_posix()) if flac else None
             dur = duration(ogg or mp3 or wav or flac)
-            sounds.append({
+            entry = {
                 "id": sid,
                 "title": stem.replace("_", " ").replace("-", " "),
                 "pack": pack,
@@ -179,10 +200,28 @@ def main():
                 "sha256_flac": sha256(flac) if flac else None,
                 "license": "CC0-1.0",
                 "source": meta["source"],
-            })
+            }
+            if meta.get("author"):
+                entry["author"] = meta["author"]
+                entry["source_archive"] = meta["source_archive"]
+            sounds.append(entry)
     sounds.sort(key=lambda s: (s["pack"], s["id"]))
+    # Legacy ogg files from the 512-retro pack had 87 colliding IDs after
+    # truncation at 150 characters. Keep the first historic ID unchanged and
+    # suffix only the ambiguous subsequent IDs with a stable path digest.
+    seen_ids = set()
+    for entry in sounds:
+        existing_id = entry["id"]
+        if existing_id in seen_ids:
+            audio_path = next(entry[f"file_{fmt}"] for fmt in ("ogg", "mp3", "wav", "flac")
+                              if entry[f"file_{fmt}"])
+            digest = hashlib.sha256(audio_path.encode("utf-8")).hexdigest()[:12]
+            entry["id"] = f"{existing_id[:137]}_{digest}"
+            if entry["id"] in seen_ids:
+                raise ValueError(f"Unresolvable duplicate sound ID: {entry['id']}")
+        seen_ids.add(entry["id"])
     payload = {
-        "version": "0.1.0",
+        "version": "0.2.0",
         "repo": REPO,
         "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat().replace("+00:00", "Z"),
         "license_audio": "CC0-1.0",
@@ -191,6 +230,20 @@ def main():
         "sounds": sounds,
     }
     INDEX.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # Keep the machine-readable category filter synchronized with the catalog.
+    categories_path = ROOT / "categories.json"
+    prior = json.loads(categories_path.read_text("utf-8"))
+    by_id = {cat["id"]: cat for cat in prior["categories"]}
+    for category in {s["category"] for s in sounds}:
+        if category not in by_id:
+            desc, desc_ar = EXTRA_CATEGORY_DESCRIPTIONS.get(category, (category, category))
+            by_id[category] = {"id": category, "description": desc, "description_ar": desc_ar}
+    for entry in by_id.values():
+        entry["packs"] = sorted({s["pack"] for s in sounds if s["category"] == entry["id"]})
+    prior["categories"] = [entry for entry in by_id.values() if entry["packs"]]
+    prior["version"] = "0.3.0"
+    categories_path.write_text(json.dumps(prior, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"index.json rebuilt: {len(sounds)} sounds from packs {batches}")
 
 

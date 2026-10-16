@@ -5,6 +5,7 @@ Re-run after any batch:  python scripts/build_previews.py
 """
 import json
 import pathlib
+import html
 from collections import defaultdict
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -32,6 +33,16 @@ PACK_TITLES = {
     "oga-battle": ("OGA Battle", "⚔️", "Battle sound effects by Ogrebane (CC0)."),
 }
 
+for imported in json.loads((ROOT / "scripts" / "cc0_oga_packs.json").read_text(encoding="utf-8")):
+    PACK_TITLES[imported["pack"]] = (
+        imported["title"], imported["emoji"], imported["description"]
+    )
+
+
+def cell(value):
+    """Escape untrusted original filenames within Markdown and HTML players."""
+    return html.escape(str(value), quote=True).replace("|", "&#124;").replace("\n", " ")
+
 
 def main():
     data = json.loads(INDEX.read_text(encoding="utf-8"))
@@ -48,7 +59,8 @@ def main():
             "",
             f"> {desc}",
             "",
-            f"**{len(sounds)} sounds** · OGG · CC0 public domain · "
+            f"**{len(sounds)} sounds** · "
+            f"{', '.join(sorted(set(fmt for sound in sounds for fmt in sound['formats']))).upper()} · CC0 public domain · "
             f"[⬅ Back to all previews](README.md) · "
             f"[🤖 Machine index](../index.json)",
             "",
@@ -58,13 +70,14 @@ def main():
         for i, s in enumerate(sounds, 1):
             url = s.get("download_url_ogg") or s.get("download_url_mp3") or s.get("download_url_wav") or s.get("download_url_flac") or ""
             dur = f'{s["duration_sec"]}s' if s.get("duration_sec") else "—"
-            tags = ", ".join(s["tags"][:5])
-            name = s["title"]
+            tags = cell(", ".join(s["tags"][:5]))
+            name = cell(s["title"])
             player = f'<audio controls preload="none" src="{url}"></audio>' if url else "—"
-            lines.append(f"| {i} | **{name}**<br>`{s['id']}` | {dur} | {tags} | {player} |")
+            lines.append(f"| {i} | **{name}**<br>`{cell(s['id'])}` | {dur} | {tags} | {player} |")
         lines += [
             "",
-            f"_Source: Kenney · Upstream: https://kenney.nl/assets/{pack} · License: CC0-1.0_",
+            f"_Source: {cell(sounds[0].get('author') or ('OpenGameArt' if pack.startswith('oga-') else 'Kenney'))}"
+            f" · [Original pack]({sounds[0]['source']}) · License: CC0-1.0_",
         ]
         (OUT / f"{pack}.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -80,7 +93,7 @@ def main():
     for pack in sorted(by_pack):
         title, emoji, desc = PACK_TITLES.get(pack, (pack, "🔊", ""))
         idx.append(f"| {emoji} **{title}**<br>{desc} | {len(by_pack[pack])} | [▶ Listen →]({pack}.md) |")
-    idx += ["", f"_Total: **{data['count']} sounds** · 10 packs · CC0 public domain._"]
+    idx += ["", f"_Total: **{data['count']} sounds** · {len(by_pack)} packs · CC0 public domain._"]
     (OUT / "README.md").write_text("\n".join(idx) + "\n", encoding="utf-8")
     print(f"previews rebuilt: {len(by_pack)} pages, {data['count']} players")
 

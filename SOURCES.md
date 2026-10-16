@@ -36,3 +36,27 @@ as were 5 non-CC0 packs (CC-BY).
 
 Full file URLs under `https://opengameart.org/sites/default/files/…` (see `scripts/oga_fetch.py`).
 macOS `__MACOSX` / `._` junk files were removed; AIFF converted losslessly to WAV.
+
+## OpenGameArt.org — 10 additional CC0 packs (2026-10-16)
+
+Every page below was checked for the official **CC0 1.0** license badge, and its
+original ZIP was downloaded from the linked OpenGameArt archive. All 10 packs
+were authored by **rubberduck**. Raw files and decoded PCM were checked against
+the existing collection, with zero matching audio content found.
+
+| Local pack | Official CC0 page | Original ZIP | Distinct files |
+|---|---|---|---:|
+| `oga-rubberduck-100-foley` | [100 CC0 SFX](https://opengameart.org/content/100-cc0-sfx) | [100-CC0-SFX_0.zip](https://opengameart.org/sites/default/files/100-CC0-SFX_0.zip) | 100 |
+| `oga-rubberduck-rpg-80` | [80 CC0 RPG SFX](https://opengameart.org/content/80-cc0-rpg-sfx) | [80-CC0-RPG-SFX_0.zip](https://opengameart.org/sites/default/files/80-CC0-RPG-SFX_0.zip) | 80 |
+| `oga-rubberduck-creatures-80` | [80 CC0 creature SFX](https://opengameart.org/content/80-cc0-creature-sfx) | [80-CC0-creature-SFX_0.zip](https://opengameart.org/sites/default/files/80-CC0-creature-SFX_0.zip) | 80 |
+| `oga-rubberduck-breaking-75` | [75 CC0 breaking / falling / hit SFX](https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx) | [sfx_breaking_and_falling.zip](https://opengameart.org/sites/default/files/sfx_breaking_and_falling.zip) | 75 |
+| `oga-rubberduck-scifi-50` | [50 CC0 Sci-Fi SFX](https://opengameart.org/content/50-cc0-sci-fi-sfx) | [sci-fi-sfx.zip](https://opengameart.org/sites/default/files/sci-fi-sfx.zip) | 50 |
+| `oga-rubberduck-water-40` | [40 CC0 water / splash / slime SFX](https://opengameart.org/content/40-cc0-water-splash-slime-sfx) | [water-splash-slime-sfx.zip](https://opengameart.org/sites/default/files/water-splash-slime-sfx.zip) | 40 |
+| `oga-rubberduck-metal-wood-100` | [100 CC0 metal and wood SFX](https://opengameart.org/content/100-cc0-metal-and-wood-sfx) | [100-CC0-wood-metal-SFX.zip](https://opengameart.org/sites/default/files/100-CC0-wood-metal-SFX.zip) | 100 |
+| `oga-rubberduck-foley-100-v2` | [100 CC0 SFX #2](https://opengameart.org/content/100-cc0-sfx-2) | [sfx_100_v2.zip](https://opengameart.org/sites/default/files/sfx_100_v2.zip) | 100 |
+| `oga-rubberduck-creatures-80-v2` | [80 CC0 creature SFX #2](https://opengameart.org/content/80-cc0-creture-sfx-2) | [80-CC0-creature-sfx-2.zip](https://opengameart.org/sites/default/files/80-CC0-creature-sfx-2.zip) | 80 |
+| `oga-rubberduck-loops-30` | [30 CC0 SFX loops](https://opengameart.org/content/30-cc0-sfx-loops) | [sfx_loops.zip](https://opengameart.org/sites/default/files/sfx_loops.zip) | 30 |
+
+**Audit:** [docs/CC0_IMPORT_AUDIT.json](docs/CC0_IMPORT_AUDIT.json) records
+each downloaded archive's SHA-256, original file count, included count, and
+deduplication results. The importer and its pack manifest live in `scripts/`.

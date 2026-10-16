@@ -127,7 +127,9 @@
       preview_url: download_urls.mp3 || download_urls.ogg || download_urls.wav || download_urls.flac || null,
       download_urls,
       license: sound.license,
-      source: sound.source
+      source: sound.source,
+      ...(sound.author ? { author: sound.author } : {}),
+      ...(sound.source_archive ? { source_archive: sound.source_archive } : {})
     };
   }
 

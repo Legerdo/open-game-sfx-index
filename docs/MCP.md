@@ -1,9 +1,9 @@
 # Agent search with WebMCP and MCP
 
-This repository contains **1,451 CC0 game sound effects** indexed by title,
+This repository contains **2,186 CC0 game sound effects** indexed by title,
 category, tags, use cases, mood, duration and available audio formats.
 The tools below return small, ranked JSON responses with **direct preview and
-download URLs**, so agents do not need to download all 1,451 audio files.
+download URLs**, so agents do not need to download all 2,186 audio files.
 
 ## 1. WebMCP (browser agents)
 
